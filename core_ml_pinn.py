@@ -207,9 +207,8 @@ if __name__ == '__main__':
 
     # Data Loading
     df = pd.read_excel(r'.\Dataset\PINN-Data.xlsx', sheet_name='Sheet1')
-    df = df[(df["Station"] != "Wanning") & (df["Steel"] != "08Al")]
-    df = df.groupby(["Station", "Steel"]).filter(lambda x: (x["y"] != 0).sum() >= 3)
     df = df[df["y"] != 0].reset_index(drop=True).fillna(0)
+    
     # Feature Definitions
     env_feats = ['T', 'RH', 'SO2', 'Cl']
     comp_feats = ['C', 'S', 'Mn', 'Cu', 'Cr', 'Ni', 'P']
